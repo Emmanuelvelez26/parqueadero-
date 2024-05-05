@@ -19,7 +19,7 @@ public Connection conectar(){
     
     try{
         Class.forName("com.mysql.jdbc.Driver");
-        cn=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/login_parqueoya","root","miseleccioncolombia26");
+        cn=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3308/login","root","");
         System.out.print("conectado");
     } catch (Exception e){
          System.out.print("Error de conexion"+e);

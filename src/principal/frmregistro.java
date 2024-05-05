@@ -136,9 +136,10 @@ public class frmregistro extends javax.swing.JDialog {
                  
              }else{
                  try {
-                     String consulta="INSERT INTO usuarios (nombre, tipo_usuario,contraseña) VALUES ('"+nombre+"', '"+tipousuario+"','"+contraseña+"');";
+                     String consulta="INSERT INTO registro (nombre, tipo_usuario,contraseña) VALUES ('"+nombre+"', '"+tipousuario+"','"+contraseña+"');";
                      java.sql.PreparedStatement ps=cn.prepareStatement(consulta);
                      ps.executeUpdate();
+                     limpiar();
                      JOptionPane.showMessageDialog(null,"datos guardados");
                      
                      
@@ -151,7 +152,11 @@ public class frmregistro extends javax.swing.JDialog {
          }
                  
     }//GEN-LAST:event_jButton1ActionPerformed
-
+void limpiar(){
+    txtnombre.setText("");
+    txtcontraseña.setText("");
+    
+}
     /**
      * @param args the command line arguments
      */

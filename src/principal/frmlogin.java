@@ -4,6 +4,13 @@
  */
 package principal;
 
+import FORMULARIO.panel_administrador;
+import FORMULARIO.panel_vigilante;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import conexion.conexionMysql;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sistems
@@ -13,6 +20,9 @@ public class frmlogin extends javax.swing.JDialog {
 
   @SuppressWarnings("PublicField")
   public static frmregistro fr;
+  
+    conexionMysql con=new conexionMysql();
+    Connection cn=con.conectar();
      
     public frmlogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -34,8 +44,8 @@ public class frmlogin extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
+        txtusuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -50,7 +60,18 @@ public class frmlogin extends javax.swing.JDialog {
 
         jLabel3.setText("CONTRASEÑA");
 
+        txtusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusuarioActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("INICIAR SESION");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("REGISTAR USUARIO");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,8 +93,8 @@ public class frmlogin extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
+                            .addComponent(txtpass, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                            .addComponent(txtusuario)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(jButton1)))
@@ -96,11 +117,11 @@ public class frmlogin extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -127,6 +148,50 @@ public class frmlogin extends javax.swing.JDialog {
         fr=new frmregistro(null,true);
         fr.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+         String usuario=txtusuario.getText();
+         String pass=txtpass.getText();
+         if(!usuario.equals("") || !pass.equals("")){
+             try {
+                 java.sql.PreparedStatement ps=cn.prepareStatement("SELECT  tipo_usuario FROM registro where nombre= '"+usuario+"' and contraseña= '"+pass+"'");
+                 java.sql.ResultSet rs=ps.executeQuery();
+                 
+                 
+                 if(rs.next()){
+                     
+                     String tipousuario= rs.getString("tipo_usuario");
+                     if(tipousuario.equalsIgnoreCase("Administrador")){
+                         dispose();
+                         panel_administrador pg=new panel_administrador();
+                         pg.setVisible(true);
+                    
+                     }else if (tipousuario.equalsIgnoreCase("Vigilante")){
+                         dispose();
+                         panel_vigilante pc=new panel_vigilante();
+                         pc.setVisible(true);
+                     
+                 }
+                    } else{
+                      JOptionPane.showMessageDialog(null,"usuario o contraseña incorrecta");
+                 }
+             
+             } catch (Exception e){
+                     JOptionPane.showMessageDialog(null,"error al iniciar sesion");
+                     }
+                 
+             
+         } else {
+             JOptionPane.showMessageDialog(null,"debe completar los datos");
+         }
+                 
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,8 +242,8 @@ public class frmlogin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField txtpass;
+    private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -193,5 +258,11 @@ public class frmlogin extends javax.swing.JDialog {
      */
     public static void setFr(frmregistro aFr) {
         fr = aFr;
+    }
+
+    private static class ResultSet {
+
+        public ResultSet() {
+        }
     }
 }
