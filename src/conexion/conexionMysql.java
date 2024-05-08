@@ -10,6 +10,7 @@ import java.sql.DriverManager;
  *
  * @author Sistems
  */
+//ESTE ES EL CODIGO DE NUESTRA CONEXION A LA BASE DE DATOS
 public class conexionMysql{
 Connection cn;
 

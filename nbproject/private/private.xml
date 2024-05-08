@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sistems/Desktop/parqueaderosena/src/conexion/conexionMysql.java</file>
-            <file>file:/C:/Users/Sistems/Desktop/parqueaderosena/src/FORMULARIO/panel_vigilante.java</file>
-            <file>file:/C:/Users/Sistems/Desktop/parqueaderosena/src/principal/frmregistro.java</file>
-            <file>file:/C:/Users/Sistems/Desktop/parqueaderosena/src/principal/frmlogin.java</file>
-            <file>file:/C:/Users/Sistems/Desktop/parqueaderosena/src/FORMULARIO/panel_administrador.java</file>
-            <file>file:/C:/Users/Sistems/Desktop/parqueaderosena/src/imagenes/imglogin.png</file>
+            <file>file:/C:/Users/Sistems/Desktop/loginparqueoya/src/FORMULARIO/panel_administrador.java</file>
+            <file>file:/C:/Users/Sistems/Desktop/loginparqueoya/src/principal/frmregistro.java</file>
+            <file>file:/C:/Users/Sistems/Desktop/loginparqueoya/src/FORMULARIO/panel_vigilante.java</file>
+            <file>file:/C:/Users/Sistems/Desktop/loginparqueoya/src/conexion/conexionMysql.java</file>
+            <file>file:/C:/Users/Sistems/Desktop/loginparqueoya/src/principal/frmlogin.java</file>
         </group>
     </open-files>
 </project-private>

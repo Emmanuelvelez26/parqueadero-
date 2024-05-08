@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Sistems
  */
-
+//ESTE CODIGO NOS BRINDA LA CONEXION DEL REGISTRO CON LA BESE DE DATOS DESDE ESTE BOTON
 @SuppressWarnings("serial")
 public class frmregistro extends javax.swing.JDialog {
     conexion.conexionMysql con=new conexionMysql();
     Connection cn=con.conectar();
 
-    
+    // ESTE CODIGO HACE VISIBLE NUESTRO PANEL DE REGISTRO
     public frmregistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -54,7 +54,7 @@ public class frmregistro extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("REGISTRO USUARIO"));
 
         txtnombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
@@ -64,6 +64,7 @@ public class frmregistro extends javax.swing.JDialog {
         combocargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CARGO", "Vigilante", "Administrador" }));
         combocargo.setBorder(javax.swing.BorderFactory.createTitledBorder("TIPO USUARIO"));
 
+        jButton1.setBackground(new java.awt.Color(51, 102, 0));
         jButton1.setText("REGISTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +77,7 @@ public class frmregistro extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(181, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -84,11 +85,10 @@ public class frmregistro extends javax.swing.JDialog {
                             .addComponent(txtcontraseña))
                         .addGap(109, 109, 109))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(combocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(188, 188, 188))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(combocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(172, 172, 172))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,9 +99,9 @@ public class frmregistro extends javax.swing.JDialog {
                 .addComponent(txtcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(combocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(jButton1)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,7 +121,7 @@ public class frmregistro extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//ESTE CODIGO NOS PERMITE EL REGISTRO DE UN NUEVO USUARIO ASI MISMO COMO SU GUARDADO EN LA BD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          String nombre=txtnombre.getText();
          String contraseña=txtcontraseña.getText();
